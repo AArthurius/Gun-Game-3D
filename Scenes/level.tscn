@@ -106,4 +106,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.84654, 7.15256e-07, 0.5589
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.212352, 7.15256e-07, 3.02866)
 
 [node name="Enemy7" parent="Enemies" instance=ExtResource("2_1flyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.58481, 7.15256e-07, 2.71176)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2628, 7.15256e-07, 1.71305)
