@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Gun Game 3D"
-run/main_scene="res://Scenes/level.tscn"
+run/main_scene="res://Scenes/World/level.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Assets/icon.svg"
 

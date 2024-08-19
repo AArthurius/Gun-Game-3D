@@ -1,10 +1,11 @@
 extends CharacterBody3D
 
 @onready var shotgun_sprite: AnimatedSprite2D = $CanvasLayer/Control/GunBase/AnimatedSprite2D
-@onready var ray_cast: ShapeCast3D = $ShapeCast3D
+@onready var ray_cast: RayCast3D = $raycast
 @onready var shoot_sound: AudioStreamPlayer3D = $ShootSound
 @onready var animation_player: AnimationPlayer = $CanvasLayer/Control/AnimationPlayer
 
+@onready var sparks: PackedScene = preload("res://Scenes/sparks.tscn")
 
 const MOUSE_SENS = 0.5
 
@@ -17,8 +18,6 @@ const JUMP_IMPULSE = sqrt(2 * GRAVITY * 0.85)
 
 var friction = 4
 var wish_jump: bool = false
-
-
 
 
 var can_shoot = true
@@ -37,7 +36,6 @@ func _input(event: InputEvent) -> void:
 		rotation_degrees.y -= event.relative.x * MOUSE_SENS
 		rotation_degrees.x -= event.relative.y * MOUSE_SENS
 		rotation_degrees.x = clamp(rotation_degrees.x, -60, 60)
-		
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("exit"):
@@ -119,8 +117,12 @@ func shoot():
 	can_shoot = false
 	shotgun_sprite.play("shoot")
 	shoot_sound.play()
-	if ray_cast.is_colliding() and ray_cast.get_collider(0).has_method("kill"):
-		ray_cast.get_collider(0).kill()
+	if ray_cast.is_colliding() and ray_cast.get_collider().has_method("kill"):
+		ray_cast.get_collider().kill()
+	elif ray_cast.is_colliding():
+		var sparks = sparks.instantiate()
+		sparks.position = ray_cast.get_collision_point()
+		$"..".add_child(sparks)
 
 func shoot_anim_done():
 	can_shoot = true

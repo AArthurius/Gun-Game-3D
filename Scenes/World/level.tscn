@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://c7v5oc5cbrhov"]
 
-[ext_resource type="PackedScene" uid="uid://qfvhcpti5hud" path="res://Scenes/player.tscn" id="1_08yid"]
-[ext_resource type="PackedScene" uid="uid://bkprqepvos4fe" path="res://Scenes/enemy.tscn" id="2_1flyc"]
+[ext_resource type="PackedScene" uid="uid://qfvhcpti5hud" path="res://Scenes/Entities/player.tscn" id="1_2veu3"]
+[ext_resource type="PackedScene" uid="uid://bkprqepvos4fe" path="res://Scenes/Entities/enemy.tscn" id="2_dkqcx"]
 
 [sub_resource type="Environment" id="Environment_sa6xg"]
 
@@ -42,7 +42,7 @@ mesh = SubResource("PlaneMesh_fv8tt")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/ground/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_032wl")
 
-[node name="block" type="MeshInstance3D" parent="Environment"]
+[node name="block" type="MeshInstance3D" parent="Environment" groups=["Wall"]]
 transform = Transform3D(1, 0, 0, 0, 2.27288, 0, 0, 0, 1, 0.51488, 1.14353, 7.45238)
 material_override = SubResource("StandardMaterial3D_ylakh")
 mesh = SubResource("BoxMesh_cp7n1")
@@ -52,7 +52,7 @@ mesh = SubResource("BoxMesh_cp7n1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/block/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_cbgwi")
 
-[node name="block2" type="MeshInstance3D" parent="Environment"]
+[node name="block2" type="MeshInstance3D" parent="Environment" groups=["Wall"]]
 transform = Transform3D(1, 0, 0, 0, 2.27288, 0, 0, 0, 1, -5.01893, 1.14353, 3.57709)
 material_override = SubResource("StandardMaterial3D_ylakh")
 mesh = SubResource("BoxMesh_cp7n1")
@@ -62,7 +62,7 @@ mesh = SubResource("BoxMesh_cp7n1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/block2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_cbgwi")
 
-[node name="block3" type="MeshInstance3D" parent="Environment"]
+[node name="block3" type="MeshInstance3D" parent="Environment" groups=["Wall"]]
 transform = Transform3D(1, 0, 0, 0, 2.27288, 0, 0, 0, 1, 7.74801, 1.14353, 5.96987)
 material_override = SubResource("StandardMaterial3D_ylakh")
 mesh = SubResource("BoxMesh_cp7n1")
@@ -72,7 +72,7 @@ mesh = SubResource("BoxMesh_cp7n1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/block3/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_cbgwi")
 
-[node name="block4" type="MeshInstance3D" parent="Environment"]
+[node name="block4" type="MeshInstance3D" parent="Environment" groups=["Wall"]]
 transform = Transform3D(1, 0, 0, 0, 2.27288, 0, 0, 0, 1, -4.74686, 1.14354, 9.86466)
 material_override = SubResource("StandardMaterial3D_ylakh")
 mesh = SubResource("BoxMesh_cp7n1")
@@ -82,28 +82,35 @@ mesh = SubResource("BoxMesh_cp7n1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/block4/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_cbgwi")
 
-[node name="Player" parent="." instance=ExtResource("1_08yid")]
-transform = Transform3D(-0.998583, 0, 0.0532248, 0, 1, 0, -0.0532248, 0, -0.998583, 0.15828, 9.53674e-07, -9.97762)
+[node name="Player" parent="." instance=ExtResource("1_2veu3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -9.978)
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="Enemy" parent="Enemies" instance=ExtResource("2_1flyc")]
+[node name="Enemy" parent="Enemies" instance=ExtResource("2_dkqcx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.16727, -2.38419e-07, 6.18369)
+move_speed = 0.0
 
-[node name="Enemy2" parent="Enemies" instance=ExtResource("2_1flyc")]
+[node name="Enemy2" parent="Enemies" instance=ExtResource("2_dkqcx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7192, -2.38419e-07, 1.71189)
+move_speed = 0.0
 
-[node name="Enemy3" parent="Enemies" instance=ExtResource("2_1flyc")]
+[node name="Enemy3" parent="Enemies" instance=ExtResource("2_dkqcx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.57811, -2.38419e-07, 17.8139)
+move_speed = 0.0
 
-[node name="Enemy4" parent="Enemies" instance=ExtResource("2_1flyc")]
+[node name="Enemy4" parent="Enemies" instance=ExtResource("2_dkqcx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.19786, -2.38419e-07, 6.68055)
+move_speed = 0.0
 
-[node name="Enemy5" parent="Enemies" instance=ExtResource("2_1flyc")]
+[node name="Enemy5" parent="Enemies" instance=ExtResource("2_dkqcx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.84654, 7.15256e-07, 0.558928)
+move_speed = 0.0
 
-[node name="Enemy6" parent="Enemies" instance=ExtResource("2_1flyc")]
+[node name="Enemy6" parent="Enemies" instance=ExtResource("2_dkqcx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.212352, 7.15256e-07, 3.02866)
+move_speed = 0.0
 
-[node name="Enemy7" parent="Enemies" instance=ExtResource("2_1flyc")]
+[node name="Enemy7" parent="Enemies" instance=ExtResource("2_dkqcx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2628, 7.15256e-07, 1.71305)
+move_speed = 0.0

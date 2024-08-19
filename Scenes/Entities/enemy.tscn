@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://bkprqepvos4fe"]
 
 [ext_resource type="Texture2D" uid="uid://d0v6j1pktlm2q" path="res://Assets/Monster/monster_sprites.png" id="1_27hfg"]
-[ext_resource type="Script" path="res://Scenes/enemy.gd" id="1_a1j83"]
+[ext_resource type="Script" path="res://Scripts/Entities/enemy.gd" id="1_a1j83"]
 [ext_resource type="AudioStream" uid="uid://c6wcjalo303h1" path="res://Assets/Monster/monster_die.wav" id="3_yyvwb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dn18b"]

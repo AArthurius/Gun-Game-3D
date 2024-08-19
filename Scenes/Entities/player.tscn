@@ -1,14 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://qfvhcpti5hud"]
+[gd_scene load_steps=19 format=3 uid="uid://qfvhcpti5hud"]
 
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_ut6ap"]
-[ext_resource type="Texture2D" uid="uid://bfu8ehdrxwbg3" path="res://Assets/Guns/Weapons_Sprite_Sheet.png" id="2_52ajh"]
-[ext_resource type="AudioStream" uid="uid://c4tnj44d3l2a2" path="res://Assets/Guns/SHOTGUN16.WAV" id="3_yb5fq"]
+[ext_resource type="Script" path="res://Scripts/Entities/player.gd" id="1_ut6ap"]
+[ext_resource type="Texture2D" uid="uid://bfu8ehdrxwbg3" path="res://Assets/Weapons/Weapons_Sprite_Sheet.png" id="2_52ajh"]
+[ext_resource type="AudioStream" uid="uid://c4tnj44d3l2a2" path="res://Assets/Weapons/SHOTGUN16.WAV" id="3_yb5fq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u0ytn"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_12rts"]
-radius = 1.0
-height = 7.14
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w541i"]
 atlas = ExtResource("2_52ajh")
@@ -164,10 +160,9 @@ shape = SubResource("CapsuleShape3D_u0ytn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 
-[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.5, -4.15)
-shape = SubResource("CapsuleShape3D_12rts")
-target_position = Vector3(0, 0, 0)
+[node name="raycast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+target_position = Vector3(0, 0, -5)
 collision_mask = 3
 
 [node name="head" type="Node3D" parent="."]
@@ -192,6 +187,8 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
+offset_top = 2.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -282,4 +279,5 @@ libraries = {
 
 [node name="ShootSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_yb5fq")
+volume_db = -27.939
 bus = &"SFX"
