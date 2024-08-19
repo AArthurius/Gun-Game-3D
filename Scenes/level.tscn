@@ -63,7 +63,7 @@ mesh = SubResource("BoxMesh_cp7n1")
 shape = SubResource("ConcavePolygonShape3D_cbgwi")
 
 [node name="block3" type="MeshInstance3D" parent="Environment"]
-transform = Transform3D(1, 0, 0, 0, 2.27288, 0, 0, 0, 1, 5.88578, 1.14353, 5.96987)
+transform = Transform3D(1, 0, 0, 0, 2.27288, 0, 0, 0, 1, 7.74801, 1.14353, 5.96987)
 material_override = SubResource("StandardMaterial3D_ylakh")
 mesh = SubResource("BoxMesh_cp7n1")
 
