@@ -89,28 +89,21 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("2_dkqcx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.16727, -2.38419e-07, 6.18369)
-move_speed = 0.0
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("2_dkqcx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7192, -2.38419e-07, 1.71189)
-move_speed = 0.0
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource("2_dkqcx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.57811, -2.38419e-07, 17.8139)
-move_speed = 0.0
 
 [node name="Enemy4" parent="Enemies" instance=ExtResource("2_dkqcx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.19786, -2.38419e-07, 6.68055)
-move_speed = 0.0
 
 [node name="Enemy5" parent="Enemies" instance=ExtResource("2_dkqcx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.84654, 7.15256e-07, 0.558928)
-move_speed = 0.0
 
 [node name="Enemy6" parent="Enemies" instance=ExtResource("2_dkqcx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.212352, 7.15256e-07, 3.02866)
-move_speed = 0.0
 
 [node name="Enemy7" parent="Enemies" instance=ExtResource("2_dkqcx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2628, 7.15256e-07, 1.71305)
-move_speed = 0.0
