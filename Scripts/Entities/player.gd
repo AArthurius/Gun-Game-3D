@@ -40,6 +40,7 @@ func _process(delta: float) -> void:
 	wish_jump = Input.is_action_pressed("jump")
 	if velocity != Vector3(0, 0, 0):
 		animation_player.play("walking")
+		animation_player.speed_scale = velocity.length()/4
 	else:
 		animation_player.pause()
 
