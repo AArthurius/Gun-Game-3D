@@ -1,21 +1,21 @@
 [gd_scene load_steps=8 format=3 uid="uid://bk6r1kfakisrs"]
 
-[ext_resource type="Texture2D" uid="uid://7s545skcppew" path="res://Assets/Weapons/sparks-Sheet.png" id="1_1fiib"]
+[ext_resource type="Texture2D" uid="uid://di51vmcm4vi24" path="res://Assets/Weapons/sparks-Sheet.png" id="1_1fiib"]
 [ext_resource type="Script" path="res://Scripts/Weapons/sparks.gd" id="2_6ylaq"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rgk07"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmd01"]
 atlas = ExtResource("1_1fiib")
 region = Rect2(0, 0, 15, 15)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fw12y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_m25xk"]
 atlas = ExtResource("1_1fiib")
 region = Rect2(15, 0, 15, 15)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_35ptx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujv3n"]
 atlas = ExtResource("1_1fiib")
 region = Rect2(30, 0, 15, 15)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3pmke"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f58j"]
 atlas = ExtResource("1_1fiib")
 region = Rect2(45, 0, 15, 15)
 
@@ -23,31 +23,30 @@ region = Rect2(45, 0, 15, 15)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rgk07")
+"texture": SubResource("AtlasTexture_fmd01")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fw12y")
+"texture": SubResource("AtlasTexture_m25xk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_35ptx")
+"texture": SubResource("AtlasTexture_ujv3n")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3pmke")
+"texture": SubResource("AtlasTexture_8f58j")
 }],
 "loop": false,
 "name": &"default",
-"speed": 7.0
+"speed": 10.0
 }]
 
 [node name="Sparks" type="AnimatedSprite3D"]
 pixel_size = 0.02
-billboard = 1
+billboard = 2
 no_depth_test = true
+alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_admil")
 autoplay = "default"
-frame = 3
-frame_progress = 1.0
 script = ExtResource("2_6ylaq")
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

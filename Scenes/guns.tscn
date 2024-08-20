@@ -1,0 +1,207 @@
+[gd_scene load_steps=18 format=3 uid="uid://d1ojtok0untp0"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/shotgun.gd" id="1_oxdpj"]
+[ext_resource type="Texture2D" uid="uid://bfu8ehdrxwbg3" path="res://Assets/Weapons/Weapons_Sprite_Sheet.png" id="2_cyydr"]
+[ext_resource type="AudioStream" uid="uid://c4tnj44d3l2a2" path="res://Assets/Weapons/SHOTGUN16.WAV" id="3_3awwi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w541i"]
+atlas = ExtResource("2_cyydr")
+region = Rect2(0, 604, 201, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7oa4"]
+atlas = ExtResource("2_cyydr")
+region = Rect2(201, 604, 201, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tjos"]
+atlas = ExtResource("2_cyydr")
+region = Rect2(402, 604, 201, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1d56k"]
+atlas = ExtResource("2_cyydr")
+region = Rect2(603, 604, 201, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqd30"]
+atlas = ExtResource("2_cyydr")
+region = Rect2(804, 604, 201, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sw1m7"]
+atlas = ExtResource("2_cyydr")
+region = Rect2(1005, 604, 201, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atyww"]
+atlas = ExtResource("2_cyydr")
+region = Rect2(1206, 604, 201, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbdm7"]
+atlas = ExtResource("2_cyydr")
+region = Rect2(1407, 604, 201, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enq0w"]
+atlas = ExtResource("2_cyydr")
+region = Rect2(1608, 604, 201, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nf8l"]
+atlas = ExtResource("2_cyydr")
+region = Rect2(1809, 604, 201, 151)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xy1rr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w541i")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7oa4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tjos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1d56k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqd30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sw1m7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atyww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbdm7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_enq0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nf8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w541i")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_nod7p"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GunBase:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(576, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GunBase:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(650, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_ary0h"]
+resource_name = "walking"
+step = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GunBase:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(576, -0.25, 0, 0.25, 0, 576, -0.25, 0, 0.25, 0, 576, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GunBase:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(648, -0.25, 0, 0.25, 0, 665, -0.25, 0, 0.25, 0, 648, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tefpx"]
+_data = {
+"RESET": SubResource("Animation_nod7p"),
+"walking": SubResource("Animation_ary0h")
+}
+
+[node name="guns" type="Node3D"]
+script = ExtResource("1_oxdpj")
+
+[node name="ShootSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_3awwi")
+bus = &"SFX"
+
+[node name="raycast" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -5)
+collision_mask = 3
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GunBase" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Control/GunBase"]
+scale = Vector2(2.25166, 2.25166)
+sprite_frames = SubResource("SpriteFrames_xy1rr")
+animation = &"Idle"
+autoplay = "Idle"
+offset = Vector2(-0.444107, -75.4998)
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.313726, 0.313726, 0.352941)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_tefpx")
+}
