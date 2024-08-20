@@ -1,14 +1,9 @@
 extends CharacterBody3D
 
-@onready var shotgun_sprite: AnimatedSprite2D = $CanvasLayer/Control/GunBase/AnimatedSprite2D
-@onready var ray_cast: RayCast3D = $raycast
-@onready var shoot_sound: AudioStreamPlayer3D = $ShootSound
-@onready var animation_player: AnimationPlayer = $CanvasLayer/Control/AnimationPlayer
-
-@onready var sparks: PackedScene = preload("res://Scenes/sparks.tscn")
+@onready var animation_player: AnimationPlayer = $head/guns/Control/AnimationPlayer
+@onready var guns: Node3D = $head/guns
 
 const MOUSE_SENS = 0.5
-
 const MAX_VELOCITY_AIR = 0.6
 const MAX_VELOCITY_GROUND = 6.0
 const MAX_ACCELERATION = 10 * MAX_VELOCITY_GROUND
@@ -18,14 +13,11 @@ const JUMP_IMPULSE = sqrt(2 * GRAVITY * 0.85)
 
 var friction = 4
 var wish_jump: bool = false
-
-
-var can_shoot = true
 var dead = false
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	shotgun_sprite.animation_finished.connect(shoot_anim_done)
+	
 	$CanvasLayer/Control/DeathScreen/Panel/Button.button_up.connect(restart)
 
 func _input(event: InputEvent) -> void:
@@ -44,8 +36,6 @@ func _process(delta: float) -> void:
 		restart()
 	if dead:
 		return
-	if Input.is_action_pressed("shoot"):
-		shoot()
 	
 	wish_jump = Input.is_action_pressed("jump")
 	if velocity != Vector3(0, 0, 0):
@@ -111,24 +101,8 @@ func update_velocity_air(wish_dir: Vector3, delta):
 func restart():
 	get_tree().reload_current_scene()
 
-func shoot():
-	if !can_shoot:
-		return
-	can_shoot = false
-	shotgun_sprite.play("shoot")
-	shoot_sound.play()
-	if ray_cast.is_colliding() and ray_cast.get_collider().has_method("kill"):
-		ray_cast.get_collider().kill()
-	elif ray_cast.is_colliding():
-		var sparks = sparks.instantiate()
-		sparks.position = ray_cast.get_collision_point()
-		$"..".add_child(sparks)
-
-func shoot_anim_done():
-	can_shoot = true
-	shotgun_sprite.play("Idle")
-
 func kill():
 	dead = true
+	guns.dead = true
 	$CanvasLayer/Control/DeathScreen.show()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
